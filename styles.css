@@ -1,0 +1,217 @@
+@import './styles_reset.css';
+@import './styles_hex.css';
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=Jacques+Francois+Shadow&display=swap');
+
+:root {
+    --background: hsl(42, 83%, 60%);
+    --background-dark: hsl(42, 54%, 48%);
+    --content-padding: 1rem;
+
+    --comb-color: hsl(54, 100%, 94%);
+    --hex-margin: 2px;
+    --hex-size: min(calc(100vw / 12 * 1.5), 75px);
+    --hex-height: calc(var(--hex-size) / 1.1547);
+    --hex-face: calc(var(--hex-height) / 1.732);
+
+    --s: var(--hex-size);
+    --m: var(--hex-margin);
+    --f: calc(1.732 * var(--s) + 4 * var(--m) - 1px);
+}
+
+body {
+    position: relative;
+    background-color: var(--background);
+    overflow-x: hidden;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.jacques-francois-regular {
+    font-family: 'Jacques Francois', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.jacques-francois-shadow-regular {
+    font-family: 'Jacques Francois Shadow', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.drop-cap {
+    font-size: 3rem;
+    line-height: 3rem;
+    font-family: 'Jacques Francois Shadow', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.title {
+    font-size: 60px;
+    line-height: 87%;
+
+    font-family: 'Jacques Francois Shadow', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.sub-title {
+    font-size: 20px;
+    line-height: 87%;
+    letter-spacing: 0.2em;
+
+    font-family: 'Jacques Francois';
+    font-style: normal;
+    font-weight: 400;
+}
+
+.title-layout {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    align-items: end;
+}
+
+.header {
+    -webkit-filter: drop-shadow(3px 3px 2px var(--background-dark));
+    filter: drop-shadow(3px 3px 2px var(--background-dark));
+    --width-in-hex: 5;
+    --height-in-hex: 4;
+    --width: calc((var(--width-in-hex) + 1) * var(--s));
+    position: absolute;
+    top: calc(-0.5 * var(--s));
+    right: calc(-1 * var(--s));
+    width: var(--width);
+}
+
+.splash {
+    position: relative;
+    height: 75vh;
+}
+
+.splash-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* margin-block-start: 400px; */
+    /* margin-block-end: 200px; */
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+
+    font-family: 'Jacques Francois';
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+}
+
+.splash-text-hightlight {
+    font-size: 2rem;
+    line-height: 3rem;
+
+    font-family: 'Jacques Francois Shadow';
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+}
+
+main {
+    position: relative;
+    background: var(--background-dark);
+    display: grid;
+    grid-template-columns: 1fr 2rem minmax(auto, 800px) 2rem 1fr;
+    z-index: 1000;
+}
+
+img.wave-left {
+    height: 100%;
+    object-fit: cover;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+img.wave-right {
+    height: 100%;
+    object-fit: cover;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+main .content {
+    background: var(--background);
+    grid-column-start: 3;
+    height: 100vh;
+}
+
+div.divider-container {
+    transform: translate(0, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 200px;
+    position: sticky;
+    top: 0;
+}
+
+img.hex-divider {
+    transform: scale(3);
+    -webkit-filter: drop-shadow(3px 3px 2px var(--background-dark));
+    filter: drop-shadow(3px 3px 2px var(--background-dark));
+}
+
+.buzzing {
+    display: inline-block;
+    animation: buzzing 5s infinite;
+}
+
+@keyframes buzzing {
+    0% {
+        /* transform: translateX(0); */
+        transform: rotate(0deg);
+        filter: blur(0px);
+    }
+    74% {
+        /* transform: translateX(0); */
+        transform: rotate(0deg);
+        filter: blur(0px);
+    }
+    75% {
+        /* transform: translateX(-5px); */
+        transform: rotate(5deg);
+        filter: blur(1px);
+    }
+    80% {
+        /* transform: translateX(5px); */
+        transform: rotate(-5deg);
+        filter: blur(1px);
+    }
+    85% {
+        /* transform: translateX(-5px); */
+        transform: rotate(5deg);
+        filter: blur(1px);
+    }
+    90% {
+        /* transform: translateX(0); */
+        transform: rotate(0deg);
+        filter: blur(0px);
+    }
+}
+
+.info {
+    margin-top: 100px;
+    background: var(--background);
+    padding: var(--content-padding);
+}
+
+.info-box {
+    h2 {
+        font-size: 2rem;
+        line-height: 2rem;
+        font-family: 'Jacques Francois Shadow', serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
