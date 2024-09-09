@@ -28,6 +28,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 900;
+    padding: var(--content-padding);
 }
 
 .jacques-francois-regular {
@@ -204,14 +205,97 @@ img.hex-divider {
     margin-top: 100px;
     background: var(--background);
     padding: var(--content-padding);
+    position: relative;
+
+    .info-container {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+    }
+    .info-box {
+        &.slide-in-from-left {
+            transform: translate(-200%);
+            animation: 1s ease-out 1s slide-in-from-left forwards;
+        }
+        .info-title {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-family: 'Jacques Francois', serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    }
+
+    .hex-box {
+        flex-shrink: 0;
+        --size: min(calc(25vw), 300px);
+        --margin: 2px;
+        width: var(--size);
+        /* margin: var(--margin); */
+        height: calc(var(--size) * 1.1547);
+        display: inline-block;
+        font-size: initial;
+        clip-path: polygon(
+            0% 25%,
+            0% 75%,
+            50% 100%,
+            100% 75%,
+            100% 25%,
+            50% 0%
+        );
+        background: var(--comb-color);
+        /* margin-bottom: calc(var(--margin) - var(--size) * 0.2885); */
+
+        --initial-rotation: 30deg;
+        transform: rotate(var(--initial-rotation));
+        animation: rotate-and-scale-in 1s forwards;
+    }
+    .hex-box::before {
+        --border-size: 8px;
+        position: absolute;
+        top: var(--border-size);
+        left: var(--border-size);
+        content: '';
+        width: calc(100% - calc(2 * var(--border-size)));
+        height: calc(100% - calc(2 * var(--border-size)));
+        display: inline-block;
+        font-size: initial;
+        clip-path: polygon(
+            0% 25%,
+            0% 75%,
+            50% 100%,
+            100% 75%,
+            100% 25%,
+            50% 0%
+        );
+        background: linear-gradient(
+            30deg,
+            var(--background-dark) 0,
+            var(--background) 50%
+        );
+    }
 }
 
-.info-box {
-    h2 {
-        font-size: 2rem;
-        line-height: 2rem;
-        font-family: 'Jacques Francois Shadow', serif;
-        font-weight: 400;
-        font-style: normal;
+@keyframes rotate-and-scale-in {
+    0% {
+        transform: rotate(calc(var(--initial-rotation) + 0deg)) scale(0);
+    }
+    80% {
+        transform: rotate(calc(var(--initial-rotation) + 366deg)) scale(1.05);
+    }
+    90% {
+        transform: rotate(calc(var(--initial-rotation) + 358deg)) scale(0.95);
+    }
+    100% {
+        transform: rotate(calc(var(--initial-rotation) + 360deg)) scale(1);
+    }
+}
+
+@keyframes slide-in-from-left {
+    0% {
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0);
     }
 }

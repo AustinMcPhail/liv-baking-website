@@ -51,7 +51,7 @@
     font-size: 0; /*disable white space between inline block element */
 }
 
-.container div {
+.hex {
     width: var(--s);
     margin: var(--m);
     height: calc(var(--s) * 1.1547);
@@ -61,6 +61,7 @@
     background: var(--comb-color);
     margin-bottom: calc(var(--m) - var(--s) * 0.2885);
 }
+
 .container::before {
     content: '';
     width: calc(var(--s) / 2 + var(--m));
